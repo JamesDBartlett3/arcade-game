@@ -1,3 +1,18 @@
+/*--------------------------------------------------------------
+| Theme ideas:
+| Grogger/Lager/Nogger: Christmas at the Pub
+| Pogger/Trogger: Revenge of the Tabletop Gamer Nerds
+| Progger/Vlogger: Crunchin' Codes & Slingin' Vids
+| Yog-er/Jogger: Fitness Face-Off
+|
+|
+|
+|
+|--------------------------------------------------------------*/
+
+
+
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
