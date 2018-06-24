@@ -4,16 +4,19 @@
 | = Welcome Modal w/
 |   - Sprite Set Selection
 |   - Color Scheme Selection
-|   - 
+|   - Difficulty Level (Increases Enemy Speed & Quantity)
+| = Randomized Enemy Speed & Direction
+|
 | Advanced design & functionality ideas:
 | = Responsive Layout
 | = Touchscreen compatible controls
 | = Weapons
 | = Animated Sprites
+| = Cheat Codes
 |--------------------------------------------------------------*/
 
 const player = new Player();
-const allEnemies = [...Array(3)].map((_,i)=> new Enemy(0,i+1));
+const allEnemies = [...Array(3)].map((_,e) => new Enemy(0,e+1));
 
 
 // This listens for key presses and sends the keys to your

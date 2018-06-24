@@ -13,6 +13,24 @@
  * writing app.js a little simpler to work with.
  */
 
+/*
+Set a base coefficient for enemy sprite speed.
+Difficulty level values:
+0.5 = "easy" mode (half-speed),
+1 = "normal" mode (default speed),
+2 = "hard" mode (double-speed),
+4 = "ludicrous" mode (quad-speed). */
+let enemyBaseSpeed = 1;
+
+/*
+Set a randomness coefficient for enemy sprite speed.
+Difficulty level values:
+0 = "easy" mode (no randomness),
+1 = "normal" mode (default randomnes),
+2 = "hard" mode (double randomness),
+4 = "ludicrous" mode (quadruple randomness). */
+let enemyBaseRandomness = 1;
+
 let Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -25,7 +43,7 @@ let Engine = (function(global) {
         lastTime;
 
     canvas.width = 505;
-    canvas.height = 606;
+    canvas.height = 505;
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -39,7 +57,9 @@ let Engine = (function(global) {
          * computer is) - hurray time!
          */
         let now = Date.now(),
-            dt = (now - lastTime) / 1000.0;
+          // Set speed of enemies
+
+          dt = (now - lastTime) * enemyBaseSpeed / 1000.0;
 
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
@@ -90,10 +110,10 @@ let Engine = (function(global) {
      * render methods.
      */
     function updateEntities(dt) {
-        // allEnemies.forEach(function(enemy) {
-        //     enemy.update(dt);
-        // });
-        // player.update();
+        allEnemies.forEach(function(enemy) {
+            enemy.update(dt);
+        });
+        player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -111,10 +131,9 @@ let Engine = (function(global) {
                 'images/stone-block.png',   // Row 1 of 3 of stone
                 'images/stone-block.png',   // Row 2 of 3 of stone
                 'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'images/grass-block.png',   // Bottom row is grass
             ],
-            numRows = 6,
+            numRows = 5,
             numCols = 5,
             row, col;
 
@@ -149,10 +168,9 @@ let Engine = (function(global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
-        // allEnemies.forEach(function(enemy) {
-        //     enemy.render();
-        // });
-        //
+        allEnemies.forEach(function(enemy) {
+            enemy.render();
+        });
         player.render();
     }
 
