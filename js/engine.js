@@ -83,6 +83,7 @@ let Engine = (function(global) {
     function update(dt) {
         updateEntities(dt);
         checkCollisions();
+        checkWin();
     }
 
     function checkCollisions() {
@@ -93,6 +94,14 @@ let Engine = (function(global) {
           player.y = startingPosition[1];
         }
       })
+    }
+
+    function checkWin() {
+      if(player.win) {
+        playerScore ++;
+        alert('Win!');
+        reset();
+      }
     }
 
     /* This is called by the update function and loops through all of the
@@ -167,12 +176,16 @@ let Engine = (function(global) {
         player.render();
     }
 
-    /* This function does nothing but it could have been a good place to
-     * handle game reset states - maybe a new game menu or a game over screen
-     * those sorts of things. It's only called once by the init() method.
-     */
+    /*
+    Starts a new round
+    */
     function reset() {
+      player.reset();
+      allEnemies.forEach((enemy) => {
+        enemy.reset();
+      })
       setGlobalVars();
+      player.win = false;
     }
 
     /* Go ahead and load all of the images we know we're going to need to

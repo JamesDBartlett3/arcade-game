@@ -7,7 +7,7 @@
 | @Rodrick [FEND] on Slack (gwgnanodegrees.slack.com)
 | @bloom305 on GitHub (https://github.com/bloom305)
 |
-| 
+|
 \* ===================================================== */
 
 class Entity {
@@ -51,11 +51,13 @@ class Player extends Entity {
   update(dt) {
     super.update();
     if(this.isOutOfBoundsY && !this.moving && !this.win) {
-      playerScore ++;
-      console.log('Your score: ' + playerScore);
-      alert('Win!');
       this.win = true;
     }
+  }
+
+  reset() {
+    this.x = startingPosition[0];
+    this.y = startingPosition[1];
   }
 
   render() {
@@ -96,5 +98,8 @@ class Enemy extends Entity {
     else {
       this.x += dt;
     }
+  }
+  reset() {
+    this.x = 0;
   }
 }
