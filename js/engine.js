@@ -13,23 +13,6 @@
  * writing app.js a little simpler to work with.
  */
 
-/*
-Set a base coefficient for enemy sprite speed.
-Difficulty level values:
-0.5 = "easy" mode (half-speed),
-1 = "normal" mode (default speed),
-2 = "hard" mode (double-speed),
-4 = "ludicrous" mode (quad-speed). */
-let enemyBaseSpeed = 1;
-
-/*
-Set a randomness coefficient for enemy sprite speed.
-Difficulty level values:
-0 = "easy" mode (no randomness),
-1 = "normal" mode (default randomnes),
-2 = "hard" mode (double randomness),
-4 = "ludicrous" mode (quadruple randomness). */
-let enemyBaseRandomness = 1;
 
 let Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
@@ -99,7 +82,17 @@ let Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
+    }
+
+    function checkCollisions() {
+      allEnemies.forEach(enemy => {
+        if(enemy.checkCollisions(player) || player.checkCollisions(enemy)) {
+          console.log('collision detected!')
+          player.x = startingPosition[0];
+          player.y = startingPosition[1];
+        }
+      })
     }
 
     /* This is called by the update function and loops through all of the
@@ -179,7 +172,7 @@ let Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+      setGlobalVars();
     }
 
     /* Go ahead and load all of the images we know we're going to need to
