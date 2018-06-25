@@ -25,6 +25,13 @@ class Entity {
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, (this.y * 82)-20);
   }
 
+  //
+  subtractHealth(amount) {
+    console.log(`${this.constructor.name}'s health before collision: ${this.health}`);
+    this.health -= amount;
+    console.log(`${this.constructor.name}'s health after collision: ${this.health}`);
+  }
+
   checkCollisions(playerOrEnemy) {
     if(this.y === playerOrEnemy.y) {
       if(this.x >= playerOrEnemy.x - collisionProximity && this.x <= playerOrEnemy.x + collisionProximity) {
@@ -40,6 +47,7 @@ class Entity {
 class Player extends Entity {
   constructor() {
     super();
+    this.health = 5;
     this.x = startingPosition[0];
     this.y = startingPosition[1];
     // TODO: Allow user to select their own character sprite
@@ -84,8 +92,9 @@ class Player extends Entity {
 }
 
 class Enemy extends Entity {
-  constructor(x, y) {
+  constructor(x, y, h) {
     super();
+    this.health = h;
     this.sprite += 'enemy-bug.png';
     this.x = x;
     this.y = y;

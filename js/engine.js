@@ -41,7 +41,8 @@ let Engine = (function(global) {
          */
         let now = Date.now(),
           // Set speed of enemies
-
+          // DO NOT MODIFY THIS CODE.
+          // Use the "global-vars.js" file to adjust game mechanics.
           dt = (now - lastTime) * enemyBaseSpeed / 1000.0;
 
         /* Call our update/render functions, pass along the time delta to
@@ -86,20 +87,35 @@ let Engine = (function(global) {
         checkWin();
     }
 
+    // Check for collisions between the player's avatar and enemy sprites
     function checkCollisions() {
+      // For each enemy sprite on the board,
       allEnemies.forEach(enemy => {
+        // Call the checkCollisions methods on both avatar types,
+        // passing the opposite type as argument.
+        // If a collision has occurred...
         if(enemy.checkCollisions(player) || player.checkCollisions(enemy)) {
-          console.log('collision detected!')
+          // Log the detected collision
+          console.log('Collision detected!');
+          // call the subtractHealth method on player and subtract 1 point.
+          player.subtractHealth(1);
+          // move player's avatar back to starting position.
           player.x = startingPosition[0];
           player.y = startingPosition[1];
         }
       })
     }
 
+    // Check to see if win condition is met
     function checkWin() {
+      // if so...
       if(player.win) {
+        // increment player score by 1
         playerScore ++;
+        // display alert to notify the player they have won
+        //TODO: Make this a Growl/Toast style notification
         alert('Win!');
+        // reset the board
         reset();
       }
     }

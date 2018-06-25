@@ -18,6 +18,7 @@ var startingPosition = [2, 4];
 var collisionProximity;
 var enemyBaseSpeed;
 var enemyBaseRandomness;
+var enemyBaseHealth = 1;
 var playerScore = 0;
 
 

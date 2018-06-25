@@ -1,23 +1,29 @@
 /*--------------------------------------------------------------
-| Basic design & functionality ideas:
+| TODO:
+|
+| Basic design & functionality:
 | = Current Score & High Score
+| = Player Health Meter
 | = Welcome Modal w/
 |   - Sprite Set Selection
 |   - Color Scheme Selection
-|   - Difficulty Level (Increases Enemy Speed & Quantity)
+|   - Difficulty Level (Increases Enemy Speed, Quantity & Health)
 | = Randomized Enemy Speed & Direction
 |
-| Advanced design & functionality ideas:
+| Advanced design & functionality:
 | = Responsive Layout
 | = Touchscreen compatible controls
 | = Weapons
 | = Animated Sprites
+| = Floating health meters for player and enemy avatars
 | = Cheat Codes
 |--------------------------------------------------------------*/
 
-// 
+// Clear the console from the last page load
+console.clear();
+
 const player = new Player();
-const allEnemies = [...Array(3)].map((_,e) => new Enemy(0,e+1));
+const allEnemies = [...Array(3)].map((_, e) => new Enemy(0, e+1, enemyBaseHealth));
 
 
 // This listens for key presses and sends the keyCodes to
