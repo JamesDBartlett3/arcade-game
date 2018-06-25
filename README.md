@@ -1,7 +1,4 @@
 # Arcade Game Clone Project
-
-** =============================== **
-
 ## Table of Contents
 
 * [Notes](#notes)
@@ -10,14 +7,12 @@
 
 ** =============================== **
 
-
 ## Notes
 
 All notes and comments regarding this game's source code are in-line,
 so please refer to the source code itself if you wish to read them.
 
 ## Gameplay Instructions
-
 ** Frogger Clone **
 Move your avatar around the board using any of the following input methods:
 * Arrow Keys (Up/Down/Left/Right)
@@ -27,7 +22,6 @@ Move your avatar around the board using any of the following input methods:
 ## Acknowledgements
 
 ### Special Thanks To
-
 * [Rodrick Bloomfield](https://www.linkedin.com/in/rodrick-bloomfield-95a82793/)
   * [GitHub](https://github.com/bloom305)
 
