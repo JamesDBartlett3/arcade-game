@@ -10,7 +10,7 @@
 * [How To Download And Modify The Source Code](#how-to-download-and-modify-the-source-code)
 
 ## Notes
-Just one: _Italicized text denotes features and/or functionality which are not yet implemented. Stay tuned!_  
+**Just one: _Italicized text denotes features and/or functionality which are not yet implemented, but are currently in development, and will soon be available in the game. Stay tuned!_**  
 
 Otherwise, all notes and comments regarding this game's source code are in-line, so please refer to the source code itself if you wish to read them.
 
@@ -19,8 +19,8 @@ Otherwise, all notes and comments regarding this game's source code are in-line,
 [For instructions on downloading, running, and modifying this game's source code, click here.](#how-to-download-and-modify-the-source-code)
 
 ## Gameplay Instructions
-The object of the game is to move your player avatar from the grassy area, across the cobblestone road, to the river -- *without* colliding with any of the "enemy" avatars. If you collide with an enemy, your avatar will be sent back to the grassy area, and you can try again.  
-_When you make it to the river, you will be shown a congratulations message, and your score will increase._
+The object of the game is to move your player avatar from the grassy area, across the cobblestone road, to the river, **without** colliding with any of the "enemy" avatars (which _currently_ look like a cross between a ladybug and a cockroach). If you collide with an enemy (or one of them collides with you), _you will lose one bar of health,_ your avatar will be sent back to the grassy area, and you can try again. Each time you make it to the river, you will be shown a congratulations message _and your score will increase._  
+_If you lose all of your health bars, the game is over, and your final score will be displayed._
 
 Move your avatar around the board using any of the following input methods:
 * Arrow Keys (Up/Down/Left/Right)
