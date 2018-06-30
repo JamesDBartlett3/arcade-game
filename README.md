@@ -46,4 +46,4 @@ Here are a few suggested methods:
   * [GitHub Desktop](https://desktop.github.com/) (a beginner-friendly UI for GitHub).
   * Run [Git](https://help.github.com/articles/cloning-a-repository/) or [SVN](https://help.github.com/articles/support-for-subversion-clients/) directly from the command line (for more experienced users and software developers).
 * [Fork it!](https://github.com/JamesDBartlett/arcade-game/fork/) (requires a GitHub account)
-  * Please note that this is a proof-of-concept project, so while I certainly encourage you to fork and play around with the code in this repo, I will not be accepting pull requests at this time. That being said, I **will** be keeping an eye on any forks that pop up, and if I see you doing something really cool, I may just get in touch with you.
+  * Please note that this is a proof-of-concept project, so while I certainly encourage you to fork and play around with the code in this repo, I will not be accepting pull requests at this time. That being said, I **will** be keeping an eye on any forks that pop up, and if I see you doing something really cool, I might just get in touch with you.

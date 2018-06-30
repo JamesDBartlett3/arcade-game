@@ -15,11 +15,19 @@ startingPosition[1] = Player's starting position on the Y axis.
 var startingPosition = [2, 4];
 
 // Declare global variables
-var collisionProximity;
+var collisionProximity = 0.70;
 var enemyBaseSpeed;
 var enemyBaseRandomness;
 var enemyBaseHealth = 1;
 var playerScore = 0;
+
+var allImages = [
+  'images/stone-block.png',
+  'images/water-block.png',
+  'images/grass-block.png',
+  'images/enemy-bug.png',
+  'images/char-boy.png'
+];
 
 
 function setGlobalVars() {
@@ -50,7 +58,8 @@ function setGlobalVars() {
   1 = "normal" mode (default randomnes),
   2 = "hard" mode (double randomness),
   4 = "ludicrous" mode (quadruple randomness). */
-  // enemyBaseRandomness = difficultyLevel;
+  enemyBaseRandomness = difficultyLevel;
+
 
   /*
   Set a proximity coefficient for calculating player collision with enemy sprites.

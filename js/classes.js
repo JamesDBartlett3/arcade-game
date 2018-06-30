@@ -7,28 +7,44 @@
 | @Rodrick [FEND] on Slack (gwgnanodegrees.slack.com)
 | @bloom305 on GitHub (https://github.com/bloom305)
 |
+| Thank you, Rodrick, for demonstrating the power and
+| simplicity of ES6 / OOP class-based JavaScript!
 |
 \* ===================================================== */
 
+
+
+/* ----------=========== <Entity Class> ===========---------- */
 class Entity {
   constructor() {
+    // all entity sprites' paths start with 'images/', so add that.
     this.sprite = 'images/';
+    // set initial x and y coordinates to 0.
     this.x = 0;
     this.y = 0;
   }
-  update(dt) {
+  update(dt) { // when an entity's update() method is called,
+    // check x and y coordinates and set isOutOfBounds booleans accordingly
     this.isOutOfBoundsX = this.x > 5;
     this.isOutOfBoundsY = this.y < 1;
   }
 
-  render() {
+  render() { // when an entity's render() method is called,
+    // use the drawImage function to draw the sprite on the board at the appropriate coordinates.
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, (this.y * 82)-20);
+    /* Note: I had to add the '-20' bit at the end to compensate for the artificial perspective
+    in the game board blocks. Without this, sprites were vertically aligned dead center over
+    their blocks, but looked like they were hanging over the block below by a few px, due to
+    inconsistent application of perspective. This change gives the sprites the same amount of
+    artifial perspective the blocks have, which makes the whole thing look much more realistic. */
   }
 
-  //
-  subtractHealth(amount) {
+  subtractHealth(amount) { // when an entity's subtractHealth() method is called,
+    // log the entity's current health
     console.log(`${this.constructor.name}'s health before collision: ${this.health}`);
+    // decrement it by the value of 'amount' parameter, which was set by the method's argument
     this.health -= amount;
+    // 
     console.log(`${this.constructor.name}'s health after collision: ${this.health}`);
   }
 
@@ -43,7 +59,11 @@ class Entity {
     }
   }
 }
+/* ----------=========== </Entity Class> ===========---------- */
 
+
+
+/* ----------=========== <Player Class> ===========---------- */
 class Player extends Entity {
   constructor() {
     super();
@@ -90,7 +110,11 @@ class Player extends Entity {
     this.moving = true;
   }
 }
+/* ----------=========== </Player Class> ===========---------- */
 
+
+
+/* ----------=========== <Enemy Class> ===========---------- */
 class Enemy extends Entity {
   constructor(x, y, h) {
     super();
@@ -112,3 +136,4 @@ class Enemy extends Entity {
     this.x = 0;
   }
 }
+/* ----------=========== </Enemy Class> ===========---------- */
