@@ -1,4 +1,4 @@
-# "Frogger" Arcade Game Clone Project
+# Arcade Game Clone Project
 
 ## Table of Contents
 * [Notes](#notes)
