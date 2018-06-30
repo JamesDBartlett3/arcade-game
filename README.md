@@ -10,18 +10,22 @@
 * [How To Download And Modify The Source Code](#how-to-download-and-modify-the-source-code)
 
 ## Notes
-All notes and comments regarding this game's source code are in-line,
-so please refer to the source code itself if you wish to read them.
+Just one: _Italicized text denotes features and/or functionality which are not yet implemented. Stay tuned!_  
+
+Otherwise, all notes and comments regarding this game's source code are in-line, so please refer to the source code itself if you wish to read them.
 
 ## How To Play
-[To play this game on my server, click here.](https://jamesdbartlett.github.io/arcade-game/)
-[For instructions on downloading, running, and modifying this game's source code, click here.]()
+[To play this game on my server, click here.](https://jamesdbartlett.github.io/arcade-game/)  
+[For instructions on downloading, running, and modifying this game's source code, click here.](#how-to-download-and-modify-the-source-code)
 
 ## Gameplay Instructions
+The object of the game is to move your player avatar from the grassy area, across the cobblestone road, to the river -- *without* colliding with any of the "enemy" avatars. If you collide with an enemy, your avatar will be sent back to the grassy area, and you can try again.  
+_When you make it to the river, you will be shown a congratulations message, and your score will increase._
+
 Move your avatar around the board using any of the following input methods:
 * Arrow Keys (Up/Down/Left/Right)
 * Doom/Quake keymap style (WASD)
-* _Touchscreen swipe [coming soon]_
+* _Touchscreen swipe_
 
 ## Acknowledgements
 
