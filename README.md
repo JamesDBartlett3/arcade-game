@@ -1,4 +1,4 @@
-# Arcade Game Clone Project
+# Arcade Game Project
 
 ## Table of Contents
 * [Notes](#notes)
