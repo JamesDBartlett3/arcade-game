@@ -39,11 +39,11 @@ The following 3rd party libraries and support files were used in this project:
   * Modeled after [Rodrick Bloomfield's demo](https://zoom.us/recording/play/aulotDlzKFegQFIJTaTzKgWvNkVsYtlwO454vL1UPE1Cm6lOUBQCtfVurPOIAGAS?startTime=1529542978000)
 
 ## How To Download And Modify The Source Code
-If you would like to download and/or modify this game's source code, please feel free!
+If you would like to download and/or modify this game's source code, please feel free!  
 Here are a few suggested methods:
 * [Download it (as a ZIP file)!](https://github.com/JamesDBartlett/arcade-game/archive/master.zip) (easiest & simplest method)
 * Clone it! (still fairly straightforward, but may require some software installation & configuration)
-  * GitHub Desktop (a beginner-friendly UI for GitHub). [Clone this repo with GitHub Desktop](href="x-github-client://openRepo/https://github.com/JamesDBartlett/arcade-game"), or [get more info about GitHub Desktop](https://desktop.github.com/)).
+  * GitHub Desktop (a beginner-friendly UI for GitHub). [Clone this repo with GitHub Desktop](x-github-client://openRepo/https://github.com/JamesDBartlett/arcade-game), or [get more info about GitHub Desktop](https://desktop.github.com/).
   * Run [Git](https://help.github.com/articles/cloning-a-repository/) or [SVN](https://help.github.com/articles/support-for-subversion-clients/) directly from the command line (for more experienced users and software developers).
 * [Fork it!](https://github.com/JamesDBartlett/arcade-game/fork/) (requires a GitHub account)
-  * Please note that this is a proof-of-concept project, so while I certainly encourage you to fork and play around with the code in this repo, I will not be accepting pull requests at this time. That being said, I *will* be keeping an eye on any forks that pop up, and if I see you doing something really cool, I may just get in touch with you.
+  * Please note that this is a proof-of-concept project, so while I certainly encourage you to fork and play around with the code in this repo, I will not be accepting pull requests at this time. That being said, I **will** be keeping an eye on any forks that pop up, and if I see you doing something really cool, I may just get in touch with you.
