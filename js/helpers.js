@@ -1,3 +1,14 @@
+/* ==========================================================================
+| =========---------- Helpers.js by James D Bartlett III ----------==========
+| This lightweight JavaScript library is designed to add a few handy
+| utilities to any project. Simply call this file in your <head> before all
+| your other JavaScript files (to make sure its functions are loaded first).
+| Then, either add functions to the "Call functions to load at page time here"
+| section below, or call them from other scripts or funcitons later. 
+========================================================================== */
+
+
+
 logDivider();
 
 // Creates a visual divider between logs from different page loads.
