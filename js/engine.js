@@ -13,7 +13,6 @@
  * writing app.js a little simpler to work with.
  */
 
-
 let Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -200,7 +199,7 @@ let Engine = (function(global) {
       allEnemies.forEach((enemy) => {
         enemy.reset();
       })
-      setGlobalVars();
+      setGlobalVars(currentLevel);
       player.win = false;
     }
 

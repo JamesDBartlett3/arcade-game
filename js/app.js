@@ -19,9 +19,6 @@
 | = Cheat Codes
 |--------------------------------------------------------------*/
 
-// Clear the console from the last page load
-console.clear();
-
 const player = new Player();
 const allEnemies = [...Array(3)].map((_, e) => new Enemy(0, e+1, enemyBaseHealth));
 

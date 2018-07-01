@@ -44,12 +44,21 @@ class Entity {
     console.log(`${this.constructor.name}'s health before collision: ${this.health}`);
     // decrement it by the value of 'amount' parameter, which was set by the method's argument
     this.health -= amount;
-    // 
+    // log new health value
     console.log(`${this.constructor.name}'s health after collision: ${this.health}`);
   }
 
-  checkCollisions(playerOrEnemy) {
+  /*
+  Returns true when player sprite collides with an enemy sprite (or vice versa). Returns false otherwise.
+  There is a function in engine.js with the same name as this method. It calls this method on all player
+  and enemy objects every round, checking all for collisions with an object of the opposite class.
+  Thus, any enemy colliding with the player object generates a collision event, while enemy objects
+  cannot generate collision events with each other.
+  */
+  checkCollisions(playerOrEnemy) { // when an entity's checkCollisions() method is called,
+    // if the 2 sprites have the same y coordinate
     if(this.y === playerOrEnemy.y) {
+      // AND if their x coordinates are within the range specified by collisionProximity
       if(this.x >= playerOrEnemy.x - collisionProximity && this.x <= playerOrEnemy.x + collisionProximity) {
         return true;
       }
@@ -66,12 +75,12 @@ class Entity {
 /* ----------=========== <Player Class> ===========---------- */
 class Player extends Entity {
   constructor() {
-    super();
-    this.health = 5;
+    super(); // inherit methods from parent class
+    this.health = playerBaseHealth; // set health of player object to 
     this.x = startingPosition[0];
     this.y = startingPosition[1];
     // TODO: Allow user to select their own character sprite
-    this.sprite += 'char-boy.png';
+    this.sprite += playerSprite;
     this.moving = false;
     this.win = false;
   }
@@ -119,7 +128,7 @@ class Enemy extends Entity {
   constructor(x, y, h) {
     super();
     this.health = h;
-    this.sprite += 'enemy-bug.png';
+    this.sprite += enemySprite;
     this.x = x;
     this.y = y;
   }

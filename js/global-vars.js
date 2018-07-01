@@ -1,27 +1,27 @@
-/*
-Set Difficulty Level
+/* Set Difficulty Level
 0 = "easy" mode,
 1 = "normal" mode,
 2 = "hard" mode,
 3 = "ludicrous" mode. */
-var difficultyLevel = 1;
+const difficultyLevel = 1;
 
-/*
-Set starting position for the player's avatar.
-Value = Array containing 2 coordinates
-startingPosition[0] = Player's starting position on the X axis.
-startingPosition[1] = Player's starting position on the Y axis.
-*/
-var startingPosition = [2, 4];
+// Create array containing the x,y coordinates of the player's starting position.
+const startingPosition = [2, 4];
 
-// Declare global variables
-var collisionProximity = 0.70;
-var enemyBaseSpeed;
-var enemyBaseRandomness;
-var enemyBaseHealth = 1;
-var playerScore = 0;
+// Set value for proximity at which two objects will be considered to have collided.
+const collisionProximity = 0.70;
 
-var allImages = [
+// Set player's initial health value.
+const playerBaseHealth = 5;
+
+// Set enemySprite to the desired enemy avatar.
+const enemySprite = 'enemy-bug.png';
+
+// Set playerSprite to the desired player avatar.
+const playerSprite = 'char-boy.png';
+
+// Create array containing all images that the game will need to load.
+const allImages = [
   'images/stone-block.png',
   'images/water-block.png',
   'images/grass-block.png',
@@ -29,15 +29,33 @@ var allImages = [
   'images/char-boy.png'
 ];
 
+// Declare global variables
+var enemyBaseSpeed;
+var enemyBaseRandomness;
+var enemyBaseHealth;
+var playerScore;
+var currentLevel;
 
+
+// Set coefficients for all object characteristics based on difficultyLevel.
 function setGlobalVars() {
-  /*
-  Set a base coefficient for enemy sprite speed.
-  Difficulty level values:
-  0.5 = "easy" mode (half-speed),
-  1 = "normal" mode (default speed),
-  2 = "hard" mode (double-speed),
-  4 = "ludicrous" mode (quad-speed). */
+  // Set all 3 enemyBase values initially to equal the value of difficultyLevel.
+  // switch(difficultyLevel) {
+  //   case 0: // enemy speed can't equal 0, because enemies wouldn't move at all,
+  //     enemyBaseHealth, enemyBaseRandomness = 1;
+  //     enemyBaseSpeed += 0.5; // so add 0.5 to make enemies move slowly.
+  //     break;
+  //   // in normal and hard modes, don't change anything.
+  //   case 1:
+  //   case 2:
+  //     enemyBaseHealth, enemyBaseSpeed,
+  //     enemyBaseRandomness = difficultyLevel;
+  //     break;
+  //   case 3:
+  //     // Ludicrous mode mixes things up a bit
+  //     enemyBaseSpeed, enemyBaseHealth,
+  //     enemyBaseRandomness += 1;
+  //     break;
   switch(difficultyLevel) {
     case 0:
       enemyBaseSpeed = difficultyLevel + 0.5;
@@ -48,40 +66,6 @@ function setGlobalVars() {
       break;
     case 3:
       enemyBaseSpeed = difficultyLevel + 1;
-      break;
-  }
-
-  /*
-  Set a randomness coefficient for enemy sprite speed.
-  Difficulty level values:
-  0 = "easy" mode (no randomness),
-  1 = "normal" mode (default randomnes),
-  2 = "hard" mode (double randomness),
-  4 = "ludicrous" mode (quadruple randomness). */
-  enemyBaseRandomness = difficultyLevel;
-
-
-  /*
-  Set a proximity coefficient for calculating player collision with enemy sprites.
-  Value = Distance (in blocks) the player must keep between their character
-  and all enemy sprites in order to avoid collisions.
-  Difficulty level values:
-  0.40 = "easy" mode (collisions occur when player & enemy overlap by ≈1/2 block),
-  0.70 = "normal" mode (collisions occur when sprites make contact),
-  1.00 = "hard" mode (collisions occur at ≈1/2 block distance from enemies),
-  1.30 = "ludicrous" mode. (collisions occur at ≈1 block distance from enemies) */
-  switch(difficultyLevel) {
-    case 0:
-      collisionProximity = 0.40;
-      break;
-    case 1:
-      collisionProximity = 0.70;
-      break;
-    case 2:
-      collisionProximity = 1.00;
-      break;
-    case 3:
-      collisionProximity = 1.30;
       break;
   }
 }
