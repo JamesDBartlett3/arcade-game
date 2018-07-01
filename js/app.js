@@ -19,6 +19,14 @@
 | = Cheat Codes
 |--------------------------------------------------------------*/
 
+let gamePaused = false;
+window.onfocus = function () {
+    gamePaused = false;
+};
+window.onblur = function () {
+    gamePaused = true;
+};
+
 const player = new Player();
 const allEnemies = [...Array(3)].map((_, e) => new Enemy(0, e+1, enemyBaseHealth));
 

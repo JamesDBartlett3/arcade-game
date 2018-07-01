@@ -81,9 +81,11 @@ let Engine = (function(global) {
      * on the entities themselves within your app.js file).
      */
     function update(dt) {
+      if(!gamePaused) {
         updateEntities(dt);
         checkCollisions();
         checkWin();
+      }
     }
 
     // Check for collisions between the player's avatar and enemy sprites
