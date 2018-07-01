@@ -22,7 +22,6 @@
 const player = new Player();
 const allEnemies = [...Array(3)].map((_, e) => new Enemy(0, e+1, enemyBaseHealth));
 
-
 // This listens for key presses and sends the keyCodes to
 // the Player.handleInput() method.
 document.addEventListener('keyup', function(e) {

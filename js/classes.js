@@ -76,7 +76,7 @@ class Entity {
 class Player extends Entity {
   constructor() {
     super(); // inherit methods from parent class
-    this.health = playerBaseHealth; // set health of player object to 
+    this.health = playerBaseHealth; // set health of player object to
     this.x = startingPosition[0];
     this.y = startingPosition[1];
     // TODO: Allow user to select their own character sprite
@@ -142,7 +142,7 @@ class Enemy extends Entity {
     }
   }
   reset() {
-    this.x = 0;
+    this.x = randInt(0, 4);
   }
 }
 /* ----------=========== </Enemy Class> ===========---------- */
