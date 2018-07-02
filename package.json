@@ -1,0 +1,25 @@
+{
+  "name": "arcade-game",
+  "version": "1.0.0",
+  "description": "Arcade Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesDBartlett/arcade-game.git"
+  },
+  "author": "James D. Bartlett III",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JamesDBartlett/arcade-game/issues"
+  },
+  "homepage": "https://github.com/JamesDBartlett/arcade-game#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0"
+  },
+  "dependencies": {
+    "gulp-sass": "^4.0.1"
+  }
+}
