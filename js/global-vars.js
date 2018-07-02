@@ -1,8 +1,10 @@
-/* Set Difficulty Level
+/*
+Set Difficulty Level
 0 = "easy" mode,
 1 = "normal" mode,
 2 = "hard" mode,
-3 = "ludicrous" mode. */
+3 = "ludicrous" mode. (This mode currently breaks the deploy() method of the Enemy class, but I'm unsure as to why. All the enemy sprites just line up vertically when this mode is selected, instead of taking their x-axis value from the randInt() function like they're supposed to. I'll have to troubleshoot this later.)
+*/
 const difficultyLevel = 1;
 
 // Create array containing the x,y coordinates of the player's starting position.
@@ -41,14 +43,14 @@ var currentLevel;
 function setGlobalVars() {
   switch(difficultyLevel) {
     case 0:
-      enemyBaseSpeed = difficultyLevel + 0.5;
+      enemyBaseSpeed = difficultyLevel + 1;
       break;
     case 1:
     case 2:
-      enemyBaseSpeed = difficultyLevel;
+      enemyBaseSpeed = difficultyLevel + 2;
       break;
     case 3:
-      enemyBaseSpeed = difficultyLevel + 1;
+      enemyBaseSpeed = difficultyLevel + 5;
       break;
   }
 }
