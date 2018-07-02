@@ -11,7 +11,7 @@ const difficultyLevel = 1;
 const startingPosition = [2, 4];
 
 // Set value for proximity at which two objects will be considered to have collided.
-const collisionProximity = 0.70;
+const collisionProximity = 0.60;
 
 // Set player's initial health value.
 const playerBaseHealth = 5;

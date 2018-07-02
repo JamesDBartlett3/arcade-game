@@ -1,7 +1,7 @@
 /* Engine.js
- * This file provides the game loop functionality (update entities and render),
+ * This file provides the game loop functionality (update characters and draw),
  * draws the initial game board on the screen, and then calls the update and
- * render methods on your player and enemy objects (defined in your app.js).
+ * draw methods on your player and enemy objects (defined in your app.js).
  *
  * A game engine works by drawing the entire game screen over and over, kind of
  * like a flipbook you may have created as a kid. When your player moves across
@@ -29,7 +29,7 @@ let Engine = (function(global) {
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
-     * and handles properly calling the update and render methods.
+     * and handles properly calling the update and draw methods.
      */
     function main() {
         /* Get our time delta information which is required if your game
@@ -44,11 +44,11 @@ let Engine = (function(global) {
           // Use the "global-vars.js" file to adjust game mechanics.
           dt = (now - lastTime) * enemyBaseSpeed / 1000.0;
 
-        /* Call our update/render functions, pass along the time delta to
+        /* Call our update/draw functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
         update(dt);
-        render();
+        draw();
 
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
@@ -73,17 +73,17 @@ let Engine = (function(global) {
 
     /* This function is called by main (our game loop) and itself calls all
      * of the functions which may need to update entity's data. Based on how
-     * you implement your collision detection (when two entities occupy the
+     * you implement your collision detection (when two characters occupy the
      * same space, for instance when your character should die), you may find
      * the need to add an additional function call here. For now, we've left
      * it commented out - you may or may not want to implement this
      * functionality this way (you could just implement collision detection
-     * on the entities themselves within your app.js file).
+     * on the characters themselves within your app.js file).
      */
     function update(dt) {
-      // Make these function calls conditional on gamePaused being false.
-      if(!gamePaused) {
-        updateEntities(dt);
+      // Make these function calls conditional on isPaused being false.
+      if(!isPaused) {
+        updateCharacters(dt);
         checkCollisions();
         checkWin();
       }
@@ -127,9 +127,9 @@ let Engine = (function(global) {
      * their update() methods. It will then call the update function for your
      * player object. These update methods should focus purely on updating
      * the data/properties related to the object. Do your drawing in your
-     * render methods.
+     * draw methods.
      */
-    function updateEntities(dt) {
+    function updateCharacters(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
@@ -137,12 +137,12 @@ let Engine = (function(global) {
     }
 
     /* This function initially draws the "game level", it will then call
-     * the renderEntities function. Remember, this function is called every
+     * the drawCharacters function. Remember, this function is called every
      * game tick (or loop of the game engine) because that's how games work -
      * they are flipbooks creating the illusion of animation but in reality
      * they are just drawing the entire screen over and over.
      */
-    function render() {
+    function draw() {
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
          */
@@ -177,21 +177,21 @@ let Engine = (function(global) {
             }
         }
 
-        renderEntities();
+        drawCharacters();
     }
 
-    /* This function is called by the render function and is called on each game
-     * tick. Its purpose is to then call the render functions you have defined
-     * on your enemy and player entities within app.js
+    /* This function is called by the draw function and is called on each game
+     * tick. Its purpose is to then call the draw functions you have defined
+     * on your enemy and player characters within app.js
      */
-    function renderEntities() {
+    function drawCharacters() {
         /* Loop through all of the objects within the allEnemies array and call
-         * the render function you have defined.
+         * the draw function you have defined.
          */
         allEnemies.forEach(function(enemy) {
-            enemy.render();
+            enemy.draw();
         });
-        player.render();
+        player.draw();
     }
 
     /*

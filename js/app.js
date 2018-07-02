@@ -20,36 +20,37 @@
 |--------------------------------------------------------------*/
 
 // Create a boolean variable to track the game's paused state.
-let gamePaused = false;
+let isPaused = false;
 
-// Whenever tab/window is focused, flip gamePaused to false.
+// Whenever tab/window is focused, flip isPaused to false.
 window.onfocus = function () {
-    gamePaused = false;
+    isPaused = false;
 };
-// Whenever tab/window is unfocused, flip gamePaused to true.
+// Whenever tab/window is unfocused, flip isPaused to true.
 window.onblur = function () {
-    gamePaused = true;
+    isPaused = true;
 };
 
 // Instantiate the player object using the Player constructor function
 const player = new Player();
 
 // Instantiate the enemy objects using the Enemy constructor function
-const allEnemies = [...Array(3)].map((_, e) => new Enemy(0, e+1, enemyBaseHealth));
+const allEnemies = [...Array(3)].map((_, y) => new Enemy(-1, y+1, enemyBaseHealth));
 
 // This listens for key presses and sends the keyCodes to
 // the Player.handleInput() method.
 document.addEventListener('keydown', function(e) {
-    let allowedKeys = {
-        37: 'left', // left arrow
-        38: 'up', // up arrow
-        39: 'right', // right arrow
-        40: 'down', // down arrow
+    let inputKeys = {
+        // keycodes for standard arrow keys movement controls
+        37: 'l', // left arrow
+        38: 'u', // up arrow
+        39: 'r', // right arrow
+        40: 'd', // down arrow
         // keycodes for "Thresh" Quake/FPS style movement controls
-        65: 'left', // A key
-        87: 'up', // W key
-        68: 'right', // D key
-        83: 'down' // S key
+        65: 'l', // A key
+        87: 'u', // W key
+        68: 'r', // D key
+        83: 'd' // S key
     };
-    player.handleInput(allowedKeys[e.keyCode]);
+    player.handleInput(inputKeys[e.keyCode]);
 });
