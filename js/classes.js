@@ -1,4 +1,4 @@
-/* ===================================================== *\
+/* ========================================================== *\
 | ES6 / OOP "Class-Based" JavaScript Implementation
 |
 | The following code is based on the ZOOM webinar
@@ -10,11 +10,12 @@
 | Thank you, Rodrick, for demonstrating the power and
 | simplicity of ES6 / OOP class-based JavaScript!
 |
-\* ===================================================== */
+\* ========================================================== */
 
 
 
-/* ----------=========== <Entity Class> ===========---------- */
+/* ----------=========== <Entity Class> ===========---------- *\
+*/
 class Entity {
   constructor() {
     // all entity sprites' paths start with 'images/', so add that.
@@ -32,14 +33,11 @@ class Entity {
   render() { // when an entity's render() method is called,
     // use the drawImage function to draw the sprite on the board at the appropriate coordinates.
     ctx.drawImage(Resources.get(this.sprite), this.x * 101, (this.y * 82)-20);
-    /* Note: I had to add the '-20' bit at the end to compensate for the artificial perspective
-    in the game board blocks. Without this, sprites were vertically aligned dead center over
-    their blocks, but looked like they were hanging over the block below by a few px, due to
-    inconsistent application of perspective. This change gives the sprites the same amount of
-    artifial perspective the blocks have, which makes the whole thing look much more realistic. */
+    /* Note: I had to add the '-20' bit at the end to compensate for the artificial perspective in the game board blocks. Without this, sprites were vertically aligned dead center over their blocks, but looked like they were hanging over the block below by a few px, due to inconsistent application of perspective. This change gives the sprites the same amount of artifial perspective the blocks have, which makes the whole thing look much more realistic. */
   }
 
-  subtractHealth(amount) { // when an entity's subtractHealth() method is called,
+  subtractHealth(amount) {
+    // when an entity's subtractHealth() method is called,
     // log the entity's current health
     console.log(`${this.constructor.name}'s health before collision: ${this.health}`);
     // decrement it by the value of 'amount' parameter, which was set by the method's argument
@@ -49,11 +47,7 @@ class Entity {
   }
 
   /*
-  Returns true when player sprite collides with an enemy sprite (or vice versa). Returns false otherwise.
-  There is a function in engine.js with the same name as this method. It calls this method on all player
-  and enemy objects every round, checking all for collisions with an object of the opposite class.
-  Thus, any enemy colliding with the player object generates a collision event, while enemy objects
-  cannot generate collision events with each other.
+  Returns true when player sprite collides with an enemy sprite (or vice versa). Returns false otherwise. There is a function in engine.js with the same name as this method. It calls this method on all player and enemy objects every round, checking each for collisions with any object of the opposite class. Thus, any enemy colliding with the player object generates a collision event, while enemy objects cannot generate collision events by colliding with each other.
   */
   checkCollisions(playerOrEnemy) { // when an entity's checkCollisions() method is called,
     // if the 2 sprites have the same y coordinate
@@ -68,81 +62,99 @@ class Entity {
     }
   }
 }
-/* ----------=========== </Entity Class> ===========---------- */
+/* ----------=========== </Entity Class> ===========---------- \*
 
 
 
-/* ----------=========== <Player Class> ===========---------- */
-class Player extends Entity {
-  constructor() {
+\* ----------===========  <Enemy Class>  ===========---------- */
+// Instantiate the Enemy class, as an extension of the Entity class
+class Enemy extends Entity {
+  // the construtor takes 3 arguments - x-axis, y-axis, and health
+  constructor(x, y, h) {
     super(); // inherit methods from parent class
-    this.health = playerBaseHealth; // set health of player object to
-    this.x = startingPosition[0];
-    this.y = startingPosition[1];
-    // TODO: Allow user to select their own character sprite
-    this.sprite += playerSprite;
-    this.moving = false;
-    this.win = false;
+    this.health = h; // set health of enemy object
+    // append playerSprite to parent's sprite string, completing path to image
+    this.sprite += enemySprite;
+    // set x and y coordinates for enemy sprite to appear on the board
+    this.x = x;
+    this.y = y;
+  }
+
+  deploy() { // set the enemy object to a position on the x-axis
+    // set x-axis position as a random number between 0 and 4 (inclusive).
+    this.x = randInt(0, 4);
   }
 
   update(dt) {
-    super.update();
+    super.update(); // call update() method from Entity class
+    // when enemy sprite moves off the board on the x-axis,
+    if(this.isOutOfBoundsX) {
+      this.x = -1; // move it back to the start
+    }
+    else { // otherwise, increment forward movement by value of 'dt'
+      this.x += dt;
+    }
+  }
+}
+/* ----------=========== </Enemy Class> ===========---------- \*
+
+
+
+\* ----------=========== <Player Class> ===========---------- */
+// Instantiate the Player class, as an extension of the Entity class
+class Player extends Entity {
+  constructor() {
+    super(); // inherit methods from parent class
+    this.health = playerBaseHealth; // set health of player object
+    this.x = startingPosition[0];
+    this.y = startingPosition[1];
+    // TODO: Allow user to select their own character sprite
+    // append playerSprite to parent's sprite string, completing path to image
+    this.sprite += playerSprite;
+    this.moving = false; // player avatar is initialized as stationary
+    this.win = false; // newly initialized player object cannot have won yet.
+  }
+
+  // Take input from keypresses, and translate them to player avatar movement
+  handleInput(input) {
+    switch(input) {
+      case 'left': // if input key is 'left'
+        // and current position on x-axis is greater than 0,
+        this.x = this.x > 0 ? this.x - 1 : this.x; // decrement this.x by 1.
+        break;
+      case 'right': // if input key is 'right'
+        // and current position on x-axis is less than 4,
+        this.x = this.x < 4 ? this.x + 1 : this.x; // increment this.x by 1.
+        break;
+      case 'up': // if input key is 'up'
+        // and current position on y-axis is greater than 0,
+        this.y = this.y > 0 ? this.y - 1 : this.y; // decrement this.y by 1.
+        break;
+      case 'down': // if input key is 'down'
+        // and current position on y-axis is less than 4,
+        this.y = this.y < 4 ? this.y + 1 : this.y; // increment this.y by 1.
+    }
+    this.moving = true; // tell update() that the player is still moving
+  }
+
+  render() {
+    super.render(); // call the render() method from the Entity class
+    this.moving = false; // tell update() that the player finished moving
+  }
+
+  reset() { // move the player avatar back to its starting position
+    this.x = startingPosition[0];
+    this.y = startingPosition[1];
+  }
+
+  update(dt) {
+    super.update(); // call the update() method from the Entity class
+    // if player has made it to the water, is no longer moving,
+    // and hasn't already won, set 'this.win' to true
     if(this.isOutOfBoundsY && !this.moving && !this.win) {
       this.win = true;
     }
   }
-
-  reset() {
-    this.x = startingPosition[0];
-    this.y = startingPosition[1];
-  }
-
-  render() {
-    super.render();
-    this.moving = false;
-  }
-
-  handleInput(input) {
-    switch(input) {
-      case 'left':
-        this.x = this.x > 0 ? this.x - 1 : this.x;
-        break;
-      case 'right':
-        this.x = this.x < 4 ? this.x + 1 : this.x;
-        break;
-      case 'up':
-        this.y = this.y > 0 ? this.y - 1 : this.y;
-        break;
-      case 'down':
-        this.y = this.y < 4 ? this.y + 1 : this.y;
-    }
-    this.moving = true;
-  }
 }
-/* ----------=========== </Player Class> ===========---------- */
-
-
-
-/* ----------=========== <Enemy Class> ===========---------- */
-class Enemy extends Entity {
-  constructor(x, y, h) {
-    super();
-    this.health = h;
-    this.sprite += enemySprite;
-    this.x = x;
-    this.y = y;
-  }
-  update(dt) {
-    super.update();
-    if(this.isOutOfBoundsX) {
-      this.x = -1;
-    }
-    else {
-      this.x += dt;
-    }
-  }
-  reset() {
-    this.x = randInt(0, 4);
-  }
-}
-/* ----------=========== </Enemy Class> ===========---------- */
+/* ----------=========== </Player Class> ===========---------- \*
+*/

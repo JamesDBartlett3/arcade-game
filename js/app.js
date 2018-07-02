@@ -19,20 +19,27 @@
 | = Cheat Codes
 |--------------------------------------------------------------*/
 
+// Create a boolean variable to track the game's paused state.
 let gamePaused = false;
+
+// Whenever tab/window is focused, flip gamePaused to false.
 window.onfocus = function () {
     gamePaused = false;
 };
+// Whenever tab/window is unfocused, flip gamePaused to true.
 window.onblur = function () {
     gamePaused = true;
 };
 
+// Instantiate the player object using the Player constructor function
 const player = new Player();
+
+// Instantiate the enemy objects using the Enemy constructor function
 const allEnemies = [...Array(3)].map((_, e) => new Enemy(0, e+1, enemyBaseHealth));
 
 // This listens for key presses and sends the keyCodes to
 // the Player.handleInput() method.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keydown', function(e) {
     let allowedKeys = {
         37: 'left', // left arrow
         38: 'up', // up arrow

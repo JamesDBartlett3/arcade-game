@@ -39,23 +39,6 @@ var currentLevel;
 
 // Set coefficients for all object characteristics based on difficultyLevel.
 function setGlobalVars() {
-  // Set all 3 enemyBase values initially to equal the value of difficultyLevel.
-  // switch(difficultyLevel) {
-  //   case 0: // enemy speed can't equal 0, because enemies wouldn't move at all,
-  //     enemyBaseHealth, enemyBaseRandomness = 1;
-  //     enemyBaseSpeed += 0.5; // so add 0.5 to make enemies move slowly.
-  //     break;
-  //   // in normal and hard modes, don't change anything.
-  //   case 1:
-  //   case 2:
-  //     enemyBaseHealth, enemyBaseSpeed,
-  //     enemyBaseRandomness = difficultyLevel;
-  //     break;
-  //   case 3:
-  //     // Ludicrous mode mixes things up a bit
-  //     enemyBaseSpeed, enemyBaseHealth,
-  //     enemyBaseRandomness += 1;
-  //     break;
   switch(difficultyLevel) {
     case 0:
       enemyBaseSpeed = difficultyLevel + 0.5;

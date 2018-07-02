@@ -81,6 +81,7 @@ let Engine = (function(global) {
      * on the entities themselves within your app.js file).
      */
     function update(dt) {
+      // Make these function calls conditional on gamePaused being false.
       if(!gamePaused) {
         updateEntities(dt);
         checkCollisions();
@@ -199,7 +200,7 @@ let Engine = (function(global) {
     function reset() {
       player.reset();
       allEnemies.forEach((enemy) => {
-        enemy.reset();
+        enemy.deploy();
       })
       setGlobalVars(currentLevel);
       player.win = false;
