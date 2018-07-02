@@ -103,7 +103,7 @@ class Player extends Character {
     // TODO: Allow player to select their own avatar sprite
     // append playerSprite to parent's sprite string, completing path to image
     this.sprite += playerSprite;
-    this.moving = false; // player avatar is initialized as stationary
+    this.static = false; // player avatar is initialized as stationary
     this.win = false; // newly initialized player object cannot have won yet.
   }
 
@@ -126,12 +126,12 @@ class Player extends Character {
         // and current position on y-axis is less than 4,
         this.y < 4 ? this.y ++ : this.y; // increment this.y by 1.
     }
-    this.moving = true; // tell update() that the player is still moving
+    this.static = false; // tell update() that the player is still moving
   }
 
   draw() {
     super.draw(); // call the draw() method from the Character class
-    this.moving = false; // tell update() that the player finished moving
+    this.static = true; // tell update() that the player finished moving
   }
 
   reset() { // move the player avatar back to its starting position
@@ -140,10 +140,9 @@ class Player extends Character {
   }
 
   update(dt) {
-    // if player has made it to the water, is no longer moving,
-    // and hasn't already won, set 'this.win' to true
-    if(this.y < 1 && !this.moving && !this.win) {
-      this.win = true;
+    // if player has made it to the water, and is no longer moving,
+    if(this.y < 1 && this.static) {
+      this.win = true; // set 'this.win' to true
     }
   }
 }
