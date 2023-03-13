@@ -15,7 +15,7 @@
 Otherwise, all notes and comments regarding this game's source code are in-line, so please refer to the source code itself if you wish to read them.
 
 ## How To Play
-[To play this game on my server, click here.](https://jamesdbartlett.github.io/arcade-game/)  
+[To play this game on my server, click here.](https://jamesdbartlett3.github.io/arcade-game/)  
 [For instructions on downloading, running, and modifying this game's source code, click here.](#how-to-download-and-modify-the-source-code)
 
 ## Gameplay Instructions
@@ -41,9 +41,9 @@ The following 3rd party libraries and support files were used in this project:
 ## How To Download And Modify The Source Code
 If you would like to download and/or modify this game's source code, please feel free!  
 Here are a few suggested methods:
-* [Download it (as a ZIP file)!](https://github.com/JamesDBartlett/arcade-game/archive/master.zip) (easiest & simplest method)
+* [Download it (as a ZIP file)!](https://github.com/JamesDBartlett3/arcade-game/archive/master.zip) (easiest & simplest method)
 * Clone it! (still fairly straightforward, but may require some software installation & configuration)
   * [GitHub Desktop](https://desktop.github.com/) (a beginner-friendly UI for GitHub).
   * Run [Git](https://help.github.com/articles/cloning-a-repository/) or [SVN](https://help.github.com/articles/support-for-subversion-clients/) directly from the command line (for more experienced users and software developers).
-* [Fork it!](https://github.com/JamesDBartlett/arcade-game/fork/) (requires a GitHub account)
+* [Fork it!](https://github.com/JamesDBartlett3/arcade-game/fork/) (requires a GitHub account)
   * Please note that this is a proof-of-concept project, so while I certainly encourage you to fork and play around with the code in this repo, I will not be accepting pull requests at this time. That being said, I **will** be keeping an eye on any forks that pop up, and if I see you doing something really cool, I might just get in touch with you.
