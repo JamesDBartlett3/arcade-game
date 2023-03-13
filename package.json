@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JamesDBartlett/arcade-game.git"
+    "url": "git+https://github.com/JamesDBartlett3/arcade-game.git"
   },
   "author": "James D. Bartlett III",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JamesDBartlett/arcade-game/issues"
+    "url": "https://github.com/JamesDBartlett3/arcade-game/issues"
   },
-  "homepage": "https://github.com/JamesDBartlett/arcade-game#readme",
+  "homepage": "https://github.com/JamesDBartlett3/arcade-game#readme",
   "devDependencies": {
     "browser-sync": "^2.24.5",
     "gulp": "^4.0.0",
